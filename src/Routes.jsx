@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { BeerList, AddKeg, Error404 } from './containers';
+import { BeerList, AddKeg } from './containers';
+import Error404 from './components/Error404';
 
 const Routes = () => (
   <Switch>
