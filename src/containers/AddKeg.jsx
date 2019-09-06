@@ -1,9 +1,11 @@
 import React from 'react';
+import NewForm from '../components/NewForm';
 
-const About = () => (
+const AddKeg = () => (
   <div>
-    <h2>About Page</h2>
+    <h2>Add a Keg</h2>
+    <NewForm />
   </div>
 );
 
-export default About;
+export default AddKeg;
