@@ -3,7 +3,7 @@ import KegList from '../components/KegList';
 
 const Home = () => (
   <div>
-    <Keg />
+    <KegList />
   </div>
 );
 

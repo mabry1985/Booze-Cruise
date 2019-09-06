@@ -1,10 +1,20 @@
 import React from 'react';
-import KegList from './KegList';
+import PropTypes from 'prop-types';
 
-function Keg() {
+function Keg(props) {
   return (
-    <KegList />
+    <div>
+      <h3>{props.name} - {props.abv}</h3>
+      <p><em>{props.brewery}</em></p>
+      <hr />
+    </div>
   );
 }
+
+Keg.propTypes = {
+  name: PropTypes.string,
+  brewery: PropTypes.string,
+  abv: PropTypes.string,
+};
 
 export default Keg;
