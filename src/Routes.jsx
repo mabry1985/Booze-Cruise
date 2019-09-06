@@ -1,11 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { Home, AddKeg } from './containers';
+import { BeerList, AddKeg, Error404 } from './containers';
 
 const Routes = () => (
   <Switch>
-    <Route exact path="/" component={Home} />
+    <Route exact path="/" component={BeerList} />
     <Route path="/add-keg" component={AddKeg} />
+    <Route component={Error404} />
   </Switch>
 );
 

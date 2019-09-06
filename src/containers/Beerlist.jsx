@@ -1,11 +1,11 @@
 import React from 'react';
 import KegList from '../components/KegList';
 
-const Home = () => (
+const BeerList = () => (
   <div>
     <h1>Beer List</h1>
     <KegList />
   </div>
 );
 
-export default Home;
+export default BeerList;
