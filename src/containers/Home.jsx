@@ -1,8 +1,9 @@
 import React from 'react';
+import KegList from '../components/KegList';
 
 const Home = () => (
   <div>
-    <h2>Home Page</h2>
+    <Keg />
   </div>
 );
 
