@@ -16,7 +16,7 @@ _This was a project for React during my time at Epicodus, practicing setting up 
 * JavaScript
 
 ##Component Tree
-![Component Tree](Component-Tree.png)
+![Component Tree]('Component-Tree.png')
 
 ## Known Bugs
 * Submit a pull request or contact Josh at mabry1985@gmail.com to report any bugs
