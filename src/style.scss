@@ -1,14 +1,9 @@
 .container {
     margin: auto;
     text-align: center;
-    max-width: 600px;
-
-    &__image {
-        width: 100px;
-        height: auto;
-    }
+    max-width: 75%;
 }
 
-.left {
-    text-align: left;
+.access-labels {
+    display: none;
 }
