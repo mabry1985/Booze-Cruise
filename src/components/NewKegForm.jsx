@@ -1,11 +1,10 @@
 import React from 'react';
 
-function NewForm() {
+function NewKegForm() {
   return (
     <div>
       <form>
         <label
-          className='access-labels'
           htmlFor='name'>
           Name
         </label>
@@ -17,7 +16,6 @@ function NewForm() {
           required />
         <br />
         <label
-          className='access-labels'
           htmlFor='brewery'>
           Brewery
         </label>
@@ -29,7 +27,6 @@ function NewForm() {
           required />
         <br />
         <label
-          className='access-labels'
           htmlFor='abv'>
           Name
         </label>
