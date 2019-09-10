@@ -6,6 +6,7 @@ function Keg(props) {
     <div>
       <h3>{props.name} - {props.abv}</h3>
       <p><em>{props.brewery}</em></p>
+      <p>{props.price}</p>
       <hr />
     </div>
   );

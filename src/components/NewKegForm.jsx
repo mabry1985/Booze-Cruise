@@ -37,10 +37,17 @@ function NewKegForm() {
           placeholder='ABV'
           required />
         <br />
+        <input
+          type='text'
+          name='price'
+          id='price'
+          placeholder='price'
+          required />
+        <br />
         <button type='submit'>Add Keg</button>
       </form>
     </div>
   );
 }
 
-export default NewForm;
+export default NewKegForm;

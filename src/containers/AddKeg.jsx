@@ -1,5 +1,5 @@
 import React from 'react';
-import NewKegForm from '../components/NewForm';
+import NewKegForm from '../components/NewKegForm';
 
 const AddKeg = () => (
   <div>
