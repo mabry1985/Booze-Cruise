@@ -1,9 +1,27 @@
 import React from 'react';
 
 function NewKegForm() {
+  let _name = null;
+  let _brewery = null;
+  let _abv = null;
+
+  function handleNewKegFormSubmission(event) {
+    event.preventDefault();
+
+    props.onNewTicketCreation({
+      name: _name.value,
+      brewery: _brewery.value,
+      abv: _abv.value,
+    });
+
+    _name.value = '';
+    _brewery.value = '';
+    _abv.value = '';
+  }
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleNewKegFormSubmission}>
         <label
           htmlFor='name'>
           Name
@@ -13,7 +31,9 @@ function NewKegForm() {
           name='name'
           id='name'
           placeholder='Name'
-          required />
+          required
+          ref={(input) => {_name = input;}} />
+
         <br />
         <label
           htmlFor='brewery'>
@@ -24,7 +44,9 @@ function NewKegForm() {
           name='brewery'
           id='brewery'
           placeholder='Brewery'
-          required />
+          required
+          ref={(input) => {_brewery = input;}}/>
+
         <br />
         <label
           htmlFor='abv'>
@@ -35,14 +57,44 @@ function NewKegForm() {
           name='abv'
           id='abv'
           placeholder='ABV'
-          required />
-        <br />
-        <input
-          type='text'
-          name='price'
-          id='price'
-          placeholder='price'
-          required />
+          required
+          ref={(input) => {_abv = input;}}/>
+
+          <div className="beer-price">
+            <label>
+              <input
+                type="radio"
+                name="beer-price-radio"
+                value="domestic"
+                checked={true}
+                className="form-check-input"
+              />
+              Domestic
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="beer-price-radio"
+                value="micro"
+                checked={false}
+                className="form-check-input"
+              />
+              Micro
+            </label>
+
+            <label>
+              <input
+                type="radio"
+                name="beer-price-radio"
+                value="import"
+                checked={false}
+                className="form-check-input"
+              />
+              Foreign
+            </label>
+          </div>
+
         <br />
         <button type='submit'>Add Keg</button>
       </form>
