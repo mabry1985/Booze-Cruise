@@ -8,7 +8,7 @@ function NewKegForm() {
   function handleNewKegFormSubmission(event) {
     event.preventDefault();
 
-    props.onNewTicketCreation({
+    props.onNewKegCreation({
       name: _name.value,
       brewery: _brewery.value,
       abv: _abv.value,
