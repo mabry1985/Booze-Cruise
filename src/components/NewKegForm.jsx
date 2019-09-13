@@ -15,8 +15,18 @@ class NewKegForm extends React.Component {
   };
 
   checkPrice = () => {
-    let price = ()
-  }
+    let price = (this.state.checkedRadio == 'micro') ? 7
+                : (this.state.checkedRadio == 'import') ? 8
+                : 3;
+
+    return price;
+  };
+
+  handleChange = (event) => {
+    this.setState({
+      checkedRadio: event.target.value,
+    });
+  };
 
   handleNewKegFormSubmission = (event) => {
     event.preventDefault();
@@ -81,8 +91,9 @@ class NewKegForm extends React.Component {
                   type="radio"
                   name="beer-price-radio"
                   value="domestic"
-                  checked={this.state.checkedRadio = 'domestic'}
+                  checked={this.state.checkedRadio === 'domestic'}
                   className="form-check-input"
+                  onChange={this.handleChange}
                 />
                 Domestic
               </label>
@@ -92,8 +103,9 @@ class NewKegForm extends React.Component {
                   type="radio"
                   name="beer-price-radio"
                   value="micro"
-                  checked={this.state.checkedRadio = 'micro'}
+                  checked={this.state.checkedRadio === 'micro'}
                   className="form-check-input"
+                  onChange={this.handleChange}
                 />
                 Micro
               </label>
@@ -103,8 +115,9 @@ class NewKegForm extends React.Component {
                   type="radio"
                   name="beer-price-radio"
                   value="import"
-                  checked={this.state.checkedRadio = 'import'}
+                  checked={this.state.checkedRadio === 'import'}
                   className="form-check-input"
+                  onChange={this.handleChange}
                 />
                 Foreign
               </label>
