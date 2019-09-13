@@ -8,7 +8,7 @@ const Routes = (props) => (
   <Switch>
     <Route exact path="/" render={()=><BeerList kegList={props.kegList} />} />
     <Route path="/add-keg"
-           render={()=><NewKegForm onNewKegCreation={props.onAddingNewKeg} />}
+           render={()=><AddKeg onNewKegCreation={props.onAddingNewKeg} />}
     />
     <Route component={Error404} />
   </Switch>
