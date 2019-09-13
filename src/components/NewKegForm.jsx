@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-function NewKegForm() {
+function NewKegForm(props) {
   let _name = null;
   let _brewery = null;
   let _abv = null;
@@ -60,7 +61,7 @@ function NewKegForm() {
           required
           ref={(input) => {_abv = input;}}/>
 
-          <div className="beer-price">
+          <div className="beer-type">
             <label>
               <input
                 type="radio"
@@ -101,5 +102,9 @@ function NewKegForm() {
     </div>
   );
 }
+
+NewKegForm.propTypes = {
+  onNewKegCreation: PropTypes.func,
+};
 
 export default NewKegForm;
