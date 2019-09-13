@@ -9,18 +9,11 @@ class NewKegForm extends React.Component {
       checkedRadio: 'micro',
     };
 
-    let _name = null;
-    let _brewery = null;
-    let _abv = null;
   };
 
-  checkPrice = () => {
-    let price = (this.state.checkedRadio == 'micro') ? 7
-                : (this.state.checkedRadio == 'import') ? 8
-                : 3;
-
-    return price;
-  };
+  _name = null;
+  _brewery = null;
+  _abv = null;
 
   handleChange = (event) => {
     this.setState({
@@ -31,21 +24,23 @@ class NewKegForm extends React.Component {
   handleNewKegFormSubmission = (event) => {
     event.preventDefault();
 
-    props.onNewKegCreation({
+    this.props.onNewKegCreation({
       name: this._name.value,
       brewery: this._brewery.value,
       abv: this._abv.value,
-      price: this.checkPrice,
+      price: this._price.value,
+      pintsLeft: 120,
     });
 
-    _name.value = '';
-    _brewery.value = '';
-    _abv.value = '';
+    this._name.value = '';
+    this._brewery.value = '';
+    this._abv.value = '';
+    this._price.value = '';
   };
 
   render () {
     return (
-      <div>
+      <React.Fragment>
         <form onSubmit={this.handleNewKegFormSubmission}>
           <label
             htmlFor='name'>
@@ -85,48 +80,62 @@ class NewKegForm extends React.Component {
             required
             ref={(input) => {this._abv = input;}}/>
 
-            <div className="beer-type">
+            <br />
+            <label
+              htmlFor='price'>
+              Name
+            </label>
+            <input
+              type='text'
+              name='price'
+              id='price'
+              placeholder='price'
+              required
+              ref={(input) => {this._price = input;}}/>
+
+          <ul>
+            <li>
               <label>
                 <input
                   type="radio"
-                  name="beer-price-radio"
                   value="domestic"
                   checked={this.state.checkedRadio === 'domestic'}
-                  className="form-check-input"
                   onChange={this.handleChange}
                 />
                 Domestic
               </label>
+            </li>
 
+            <li>
               <label>
                 <input
                   type="radio"
-                  name="beer-price-radio"
                   value="micro"
                   checked={this.state.checkedRadio === 'micro'}
-                  className="form-check-input"
                   onChange={this.handleChange}
                 />
                 Micro
               </label>
+            </li>
 
+            <li>
               <label>
                 <input
                   type="radio"
                   name="beer-price-radio"
                   value="import"
                   checked={this.state.checkedRadio === 'import'}
-                  className="form-check-input"
                   onChange={this.handleChange}
                 />
                 Foreign
               </label>
-            </div>
+            </li>
+          </ul>
 
           <br />
           <button type='submit'>Add Keg</button>
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }
