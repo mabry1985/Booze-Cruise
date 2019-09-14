@@ -9,13 +9,14 @@ class NewKegForm extends React.Component {
       checkedRadio: 'micro',
     };
 
-  };
+    let _name = null;
+    let _brewery = null;
+    let _abv = null;
+    let _style = null;
 
-  _name = null;
-  _brewery = null;
-  _abv = null;
 
   handleChange = (event) => {
+    console.log(this.state.checkedRadio);
     this.setState({
       checkedRadio: event.target.value,
     });
@@ -24,17 +25,31 @@ class NewKegForm extends React.Component {
   handleNewKegFormSubmission = (event) => {
     event.preventDefault();
 
+    let style = this.state.checkedRadio;
+    let price = '';
+
+    if (style === 'micro') {
+      price = '$6.00';
+    }else if (style === 'foreign') {
+      price = '$8.00';
+    } else {
+      price = '$4.00';
+    }
+
     this.props.onNewKegCreation({
       name: this._name.value,
       brewery: this._brewery.value,
+      style: this._style.value,
       abv: this._abv.value,
-      price: this._price.value,
+      price: price,
       pintsLeft: 120,
+
     });
 
     this._name.value = '';
     this._brewery.value = '';
     this._abv.value = '';
+    this._style.value = '';
     this._price.value = '';
   };
 
@@ -69,8 +84,21 @@ class NewKegForm extends React.Component {
 
           <br />
           <label
+            htmlFor='style'>
+            Style
+          </label>
+          <input
+            type='text'
+            name='style'
+            id='style'
+            placeholder='Style'
+            required
+            ref={(input) => {this._style = input;}}/>
+
+          <br />
+          <label
             htmlFor='abv'>
-            Name
+            ABV
           </label>
           <input
             type='text'
@@ -127,7 +155,7 @@ class NewKegForm extends React.Component {
                   checked={this.state.checkedRadio === 'import'}
                   onChange={this.handleChange}
                 />
-                Foreign
+                Import
               </label>
             </li>
           </ul>
