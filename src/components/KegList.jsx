@@ -1,6 +1,6 @@
 import React from 'react';
-import Keg from './Keg';
 import PropTypes from 'prop-types';
+import Keg from './Keg';
 
 function KegList(props) {
   return (
@@ -11,6 +11,7 @@ function KegList(props) {
           brewery={keg.brewery}
           price={keg.price}
           abv={keg.abv}
+          pintsLeft={keg.pintsLeft}
           key={index} />
       )}
      </div>
