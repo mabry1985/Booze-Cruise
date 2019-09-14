@@ -13,7 +13,7 @@ class NewKegForm extends React.Component {
     let _brewery = null;
     let _abv = null;
     let _style = null;
-
+  };
 
   handleChange = (event) => {
     console.log(this.state.checkedRadio);
@@ -50,12 +50,11 @@ class NewKegForm extends React.Component {
     this._brewery.value = '';
     this._abv.value = '';
     this._style.value = '';
-    this._price.value = '';
   };
 
   render () {
     return (
-      <React.Fragment>
+      <div>
         <form onSubmit={this.handleNewKegFormSubmission}>
           <label
             htmlFor='name'>
@@ -109,18 +108,6 @@ class NewKegForm extends React.Component {
             ref={(input) => {this._abv = input;}}/>
 
             <br />
-            <label
-              htmlFor='price'>
-              Name
-            </label>
-            <input
-              type='text'
-              name='price'
-              id='price'
-              placeholder='price'
-              required
-              ref={(input) => {this._price = input;}}/>
-
           <ul>
             <li>
               <label>
@@ -163,7 +150,7 @@ class NewKegForm extends React.Component {
           <br />
           <button type='submit'>Add Keg</button>
         </form>
-      </React.Fragment>
+      </div>
     );
   }
 }
