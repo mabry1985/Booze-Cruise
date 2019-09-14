@@ -18,6 +18,22 @@ class App extends React.Component {
     this.setState({ masterKegList: newMasterKegList });
   };
 
+  handleSellBeer = (i) => {
+    this.setState(state => {
+      const kegArray = state.masterKegList.map((keg, j) => {
+        if (j === i) {
+          keg.votes -= 1;
+          return keg;
+        } else {
+          return keg;
+        }
+      });
+      return {
+        kegArray,
+      };
+    });
+  };
+
   render() {
     return (
       <BrowserRouter>
@@ -26,6 +42,7 @@ class App extends React.Component {
       <Routes
         onAddingNewKeg={this.handleAddingNewKeg}
         kegList={this.state.masterKegList}
+        onSellBeer={this.handleSellBeer}
       />
       </main>
       </BrowserRouter>

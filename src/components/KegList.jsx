@@ -12,7 +12,8 @@ function KegList(props) {
           price={keg.price}
           abv={keg.abv}
           pintsLeft={keg.pintsLeft}
-          key={index} />
+          key={index}
+          onSellBeer={props.onSellBeer} />
       )}
      </div>
    );
@@ -20,6 +21,7 @@ function KegList(props) {
 
 KegList.propTypes = {
   kegList: PropTypes.array,
+  onSellBeer: PropTypes.func,
 };
 
 export default KegList;

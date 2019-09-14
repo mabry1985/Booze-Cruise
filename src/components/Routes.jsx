@@ -6,10 +6,13 @@ import PropTypes from 'prop-types';
 
 const Routes = (props) => (
   <Switch>
-    <Route exact path="/" render={()=><BeerList kegList={props.kegList} />} />
+    <Route exact path="/"
+           render={()=><BeerList kegList={props.kegList}
+                                 onSellBeer={props.onSellBeer} />}
+                                 />
     <Route path="/add-keg"
            render={()=><AddKeg onNewKegCreation={props.onAddingNewKeg} />}
-    />
+           />
     <Route component={Error404} />
   </Switch>
 );
@@ -17,6 +20,7 @@ const Routes = (props) => (
 Routes.propTypes = {
   onNewKegCreation: PropTypes.func,
   kegList: PropTypes.array,
+  onSellBeer: PropTypes.func,
 };
 
 export default Routes;

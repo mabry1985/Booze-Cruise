@@ -57,52 +57,56 @@ class NewKegForm extends React.Component {
       <div>
         <form onSubmit={this.handleNewKegFormSubmission}>
           <label
+            className='a11y'
             htmlFor='name'>
             Name
           </label>
           <input
             type='text'
             name='name'
-            id='name'
+            class='name'
             placeholder='Name'
             required
             ref={(input) => {this._name = input;}} />
 
           <br />
           <label
+            className='a11y'
             htmlFor='brewery'>
             Brewery
           </label>
           <input
             type='text'
             name='brewery'
-            id='brewery'
+            class='brewery'
             placeholder='Brewery'
             required
             ref={(input) => {this._brewery = input;}}/>
 
           <br />
           <label
+            className='a11y'
             htmlFor='style'>
             Style
           </label>
           <input
             type='text'
             name='style'
-            id='style'
+            class='style'
             placeholder='Style'
             required
             ref={(input) => {this._style = input;}}/>
 
           <br />
           <label
+            className='a11y'
             htmlFor='abv'>
             ABV
           </label>
           <input
             type='text'
             name='abv'
-            id='abv'
+            class='abv'
             placeholder='ABV'
             required
             ref={(input) => {this._abv = input;}}/>

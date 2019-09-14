@@ -8,6 +8,10 @@ function Keg(props) {
       <p><em>{props.brewery}</em></p>
       <p>{props.price}</p>
       <p>{props.pintsLeft}</p>
+      <button
+        onClick={() => props.onSellBeer(props.id)}>
+        Sell
+      </button>
       <hr />
     </div>
   );
@@ -19,6 +23,7 @@ Keg.propTypes = {
   abv: PropTypes.string,
   price: PropTypes.string,
   pintsLeft: PropTypes.number,
+  onSellBeer: PropTypes.func,
 };
 
 export default Keg;
