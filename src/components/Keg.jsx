@@ -22,8 +22,10 @@ Keg.propTypes = {
   brewery: PropTypes.string,
   abv: PropTypes.string,
   price: PropTypes.string,
+  id: PropTypes.string,
   pintsLeft: PropTypes.number,
   onSellBeer: PropTypes.func,
+
 };
 
 export default Keg;

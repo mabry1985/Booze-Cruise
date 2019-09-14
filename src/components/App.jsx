@@ -18,11 +18,11 @@ class App extends React.Component {
     this.setState({ masterKegList: newMasterKegList });
   };
 
-  handleSellBeer = (i) => {
+  handleSellBeer = (id) => {
     this.setState(state => {
-      const kegArray = state.masterKegList.map((keg, j) => {
-        if (j === i) {
-          keg.votes -= 1;
+      const kegArray = state.masterKegList.map((keg) => {
+        if (keg.id === id) {
+          keg.pintsLeft -= 1;
           return keg;
         } else {
           return keg;

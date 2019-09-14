@@ -6,13 +6,14 @@ function KegList(props) {
   return (
     <div>
       <hr />
-      {props.kegList.map((keg, index) =>
+      {props.kegList.map((keg) =>
         <Keg name={keg.name}
           brewery={keg.brewery}
           price={keg.price}
           abv={keg.abv}
           pintsLeft={keg.pintsLeft}
-          key={index}
+          key={keg.id}
+          id={keg.id}
           onSellBeer={props.onSellBeer} />
       )}
      </div>

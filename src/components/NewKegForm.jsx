@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { v4 } from 'uuid';
 
 class NewKegForm extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class NewKegForm extends React.Component {
       abv: this._abv.value,
       price: price,
       pintsLeft: 120,
+      id: v4(),
 
     });
 
@@ -64,7 +66,7 @@ class NewKegForm extends React.Component {
           <input
             type='text'
             name='name'
-            class='name'
+            className='name'
             placeholder='Name'
             required
             ref={(input) => {this._name = input;}} />
@@ -78,7 +80,7 @@ class NewKegForm extends React.Component {
           <input
             type='text'
             name='brewery'
-            class='brewery'
+            className='brewery'
             placeholder='Brewery'
             required
             ref={(input) => {this._brewery = input;}}/>
@@ -92,7 +94,7 @@ class NewKegForm extends React.Component {
           <input
             type='text'
             name='style'
-            class='style'
+            className='style'
             placeholder='Style'
             required
             ref={(input) => {this._style = input;}}/>
@@ -106,7 +108,7 @@ class NewKegForm extends React.Component {
           <input
             type='text'
             name='abv'
-            class='abv'
+            className='abv'
             placeholder='ABV'
             required
             ref={(input) => {this._abv = input;}}/>
