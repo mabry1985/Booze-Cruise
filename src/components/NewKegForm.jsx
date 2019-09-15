@@ -31,7 +31,7 @@ class NewKegForm extends React.Component {
 
     if (style === 'micro') {
       price = '$6.00';
-    }else if (style === 'foreign') {
+    }else if (style === 'import') {
       price = '$8.00';
     } else {
       price = '$4.00';
@@ -114,8 +114,6 @@ class NewKegForm extends React.Component {
             ref={(input) => {this._abv = input;}}/>
 
             <br />
-          <ul>
-            <li>
               <label>
                 <input
                   type="radio"
@@ -125,9 +123,7 @@ class NewKegForm extends React.Component {
                 />
                 Domestic
               </label>
-            </li>
 
-            <li>
               <label>
                 <input
                   type="radio"
@@ -137,9 +133,7 @@ class NewKegForm extends React.Component {
                 />
                 Micro
               </label>
-            </li>
 
-            <li>
               <label>
                 <input
                   type="radio"
@@ -150,9 +144,6 @@ class NewKegForm extends React.Component {
                 />
                 Import
               </label>
-            </li>
-          </ul>
-
           <br />
           <button type='submit'>Add Keg</button>
         </form>
