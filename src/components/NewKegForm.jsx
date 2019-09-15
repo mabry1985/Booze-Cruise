@@ -30,11 +30,11 @@ class NewKegForm extends React.Component {
     let price = '';
 
     if (style === 'micro') {
-      price = '$6.00';
+      price = 6;
     }else if (style === 'import') {
-      price = '$8.00';
+      price = 8;
     } else {
-      price = '$4.00';
+      price = 4;
     }
 
     this.props.onNewKegCreation({

@@ -71,6 +71,7 @@
     "react-hot-loader": "^4.12.12",
     "react-radio-group": "^3.0.3",
     "react-router-dom": "^4.3.1",
+    "socket.io": "^2.2.0",
     "uuid": "^3.2.1",
     "whatwg-fetch": "^3.0.0"
   }
