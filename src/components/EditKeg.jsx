@@ -1,28 +1,50 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function EditKeg(props) {
-  handleNewKegFormSubmission = (event) => {
+class EditKeg extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      checkedRadio: 'micro',
+    };
+
+    let _name = null;
+    let _brewery = null;
+    let _abv = null;
+    let _style = null;
+    let _pintsLeft = null;
+  };
+
+  handleChange = (event) => {
+    console.log(this.state.checkedRadio);
+    this.setState({
+      checkedRadio: event.target.value,
+    });
+  };
+
+  handleEditKegFormSubmission = (event) => {
     event.preventDefault();
 
     let style = this.state.checkedRadio;
     let price = '';
 
     if (style === 'micro') {
-      price = '$6.00';
-    }else if (style === 'foreign') {
-      price = '$8.00';
+      price = 6;
+    }else if (style === 'import') {
+      price = 8;
     } else {
-      price = '$4.00';
+      price = 4;
     }
 
-    this.props.onNewKegCreation({
+    this.props.onEditKeg({
       name: this._name.value,
       brewery: this._brewery.value,
       style: this._style.value,
       abv: this._abv.value,
       price: price,
-      id: v4(),
+      pintsLeft: this._pintsLeft.value,
+      id: this.props.id,
 
     });
 
@@ -35,7 +57,7 @@ function EditKeg(props) {
   render () {
     return (
       <div>
-        <form onSubmit={this.handleNewKegFormSubmission}>
+        <form onSubmit={this.handleEditKegFormSubmission}>
           <label
             className='a11y'
             htmlFor='name'>
@@ -44,6 +66,7 @@ function EditKeg(props) {
           <input
             type='text'
             name='name'
+            defaultValue= {this.props.name}
             className='name'
             placeholder='Name'
             required
@@ -58,6 +81,7 @@ function EditKeg(props) {
           <input
             type='text'
             name='brewery'
+            defaultValue= {this.props.brewery}
             className='brewery'
             placeholder='Brewery'
             required
@@ -72,6 +96,7 @@ function EditKeg(props) {
           <input
             type='text'
             name='style'
+            defaultValue= {this.props.style}
             className='style'
             placeholder='Style'
             required
@@ -86,14 +111,28 @@ function EditKeg(props) {
           <input
             type='text'
             name='abv'
+            defaultValue= {this.props.abv}
             className='abv'
             placeholder='ABV'
             required
             ref={(input) => {this._abv = input;}}/>
 
+          <br />
+          <label
+            className='a11y'
+            htmlFor='pintsLeft'>
+            pintsLeft
+          </label>
+          <input
+            type='text'
+            name='pintsLeft'
+            defaultValue= {this.props.pintsLeft}
+            className='pintsLeft'
+            placeholder='PintsLeft'
+            required
+            ref={(input) => {this._pintsLeft = input;}}/>
+
             <br />
-          <ul>
-            <li>
               <label>
                 <input
                   type="radio"
@@ -103,9 +142,7 @@ function EditKeg(props) {
                 />
                 Domestic
               </label>
-            </li>
 
-            <li>
               <label>
                 <input
                   type="radio"
@@ -115,9 +152,7 @@ function EditKeg(props) {
                 />
                 Micro
               </label>
-            </li>
 
-            <li>
               <label>
                 <input
                   type="radio"
@@ -128,20 +163,19 @@ function EditKeg(props) {
                 />
                 Import
               </label>
-            </li>
-          </ul>
-
           <br />
-          <button type='submit'>Add Keg</button>
+          <button type='submit'>Edit Keg</button>
         </form>
+
       </div>
     );
   }
 }
 
 EditKeg.propTypes = {
+  onNewKegCreation: PropTypes.func,
   onEditKeg: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default EditKeg;
-}

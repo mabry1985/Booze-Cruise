@@ -18,6 +18,21 @@ class App extends React.Component {
     this.setState({ masterKegList: newMasterKegList });
   };
 
+  handleEditKeg = (updatedKeg) => {
+    this.setState(state => {
+      const kegArray = state.masterKegList.map((keg) => {
+        if (keg.id === updatedKeg.id) {
+          keg.name = updatedKeg.name;
+          keg.brewery = updatedKeg.style;
+          keg.style = updatedKeg.style;
+          keg.abv = updatedKeg.abv;
+          keg.price = updatedKeg.price;
+          keg.pintsLeft = updatedKeg.pintsLeft;
+        }
+      });
+    });
+  };
+
   handleSellBeer = (id) => {
     this.setState(state => {
       const kegArray = state.masterKegList.map((keg) => {
@@ -43,6 +58,7 @@ class App extends React.Component {
         onAddingNewKeg={this.handleAddingNewKeg}
         kegList={this.state.masterKegList}
         onSellBeer={this.handleSellBeer}
+        onEditKeg={this.handleEditKeg}
       />
       </main>
       </BrowserRouter>
