@@ -10,6 +10,7 @@ function KegList(props) {
         <Keg name={keg.name}
           brewery={keg.brewery}
           price={keg.price}
+          style={keg.style}
           abv={keg.abv}
           pintsLeft={keg.pintsLeft}
           key={keg.id}
