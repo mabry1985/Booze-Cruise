@@ -13,7 +13,7 @@ const io = socketID(server);
 io.on('connection', socket => {
   console.log('user connected');
   socket.on('update list', (list) => {
-    console.log('List Updated');
+    console.log('List Updated' + list);
     io.sockets.emit('update list', list);
   });
 
