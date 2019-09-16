@@ -16,7 +16,8 @@ function KegList(props) {
           key={keg.id}
           id={keg.id}
           onSellBeer={props.onSellBeer}
-          onEditKeg={props.onEditKeg} />
+          onEditKeg={props.onEditKeg}
+          onDeleteKeg={props.onDeleteKeg} />
       )}
      </div>
    );
@@ -26,6 +27,7 @@ KegList.propTypes = {
   kegList: PropTypes.array,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
+  onDeleteKeg: PropTypes.func,
 };
 
 export default KegList;

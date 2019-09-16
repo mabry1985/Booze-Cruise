@@ -7,7 +7,8 @@ const BeerList = (props) => (
     <h1>Beer List</h1>
     <KegList kegList={props.kegList}
              onSellBeer={props.onSellBeer}
-             onEditKeg={props.onEditKeg}/>
+             onEditKeg={props.onEditKeg}
+             onDeleteKeg={props.onDeleteKeg}/>
   </div>
 );
 
@@ -15,6 +16,7 @@ BeerList.propTypes = {
   kegList: PropTypes.array,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
+  onDeleteKeg: PropTypes.func,
 };
 
 export default BeerList;

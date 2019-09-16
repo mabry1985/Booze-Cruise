@@ -15,6 +15,10 @@ function Keg(props) {
         onClick={() => props.onSellBeer(props.id)}>
         Sell
       </button>
+      <button
+        onClick={() => props.onDeleteKeg(props.id)}>
+        Delete
+      </button>
       <Link to={{
           pathname: '/edit-keg/' + props.id,
           id: props.id,
@@ -51,6 +55,7 @@ Keg.propTypes = {
   pintsLeft: PropTypes.number,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
+  onDeleteKeg: PropTypes.func,
 
 };
 

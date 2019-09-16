@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/images/booze-cruise-logo.png';
 import './header.scss';
+import PropType from 'prop-types';
 
-function Header() {
+function Header(props) {
 
   return (
     <nav id='navbar'>
@@ -17,9 +18,14 @@ function Header() {
             |
             <Link to="/add-keg"> Add Keg</Link>
           </h3>
+          <button onClick={() => props.onSend() }>Update List</button>
         </span>
     </nav>
   );
 }
+
+Header.propTypes = {
+  onSend: PropType.func,
+};
 
 export default Header;

@@ -11,11 +11,13 @@ const Routes = (props) => (
            render={()=><BeerList
            kegList={props.kegList}
            onSellBeer={props.onSellBeer}
-           onEditKeg={props.onEditKeg}/>}
+           onEditKeg={props.onEditKeg}
+           onDeleteKeg={props.onDeleteKeg}/>}
            />
     <Route path="/add-keg"
            render={()=><AddKeg
-           onNewKegCreation={props.onAddingNewKeg} />}
+           onNewKegCreation={props.onAddingNewKeg}
+           onSend={props.onSend}/>}
            />
     <Route component={Error404} />
   </Switch>
@@ -26,6 +28,7 @@ Routes.propTypes = {
   kegList: PropTypes.array,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
+  onSend: PropTypes.func,
   id: PropTypes.string,
 };
 
