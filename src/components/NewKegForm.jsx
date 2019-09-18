@@ -17,7 +17,6 @@ class NewKegForm extends React.Component {
   };
 
   handleChange = (event) => {
-    console.log(this.state.checkedRadio);
     this.setState({
       checkedRadio: event.target.value,
     });
@@ -26,6 +25,17 @@ class NewKegForm extends React.Component {
   handleNewKegFormSubmission = (event) => {
     const { dispatch } = this.props;
     event.preventDefault();
+
+    let style = this.state.checkedRadio;
+    let price = '';
+
+    if (style === 'micro') {
+      price = 6;
+    }else if (style === 'import') {
+      price = 8;
+    } else {
+      price = 4;
+    }
 
     const action = {
       type: 'ADD_KEG',
@@ -39,17 +49,6 @@ class NewKegForm extends React.Component {
     };
 
     dispatch(action);
-
-    let style = this.state.checkedRadio;
-    let price = '';
-
-    if (style === 'micro') {
-      price = 6;
-    }else if (style === 'import') {
-      price = 8;
-    } else {
-      price = 4;
-    }
 
     this._name.value = '';
     this._brewery.value = '';
