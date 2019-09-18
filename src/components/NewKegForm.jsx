@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { v4 } from 'uuid';
+import { connect } from 'react-redux';
 
 class NewKegForm extends React.Component {
   constructor(props) {
@@ -24,7 +24,21 @@ class NewKegForm extends React.Component {
   };
 
   handleNewKegFormSubmission = (event) => {
+    const { dispatch } = this.props;
     event.preventDefault();
+
+    const action = {
+      type: 'ADD_KEG',
+      name: this._name.value,
+      brewery: this._brewery.value,
+      style: this._style.value,
+      abv: this._abv.value,
+      price: price,
+      pintsLeft: 120,
+      id: v4(),
+    };
+
+    dispatch(action);
 
     let style = this.state.checkedRadio;
     let price = '';
@@ -36,17 +50,6 @@ class NewKegForm extends React.Component {
     } else {
       price = 4;
     }
-
-    this.props.onNewKegCreation({
-      name: this._name.value,
-      brewery: this._brewery.value,
-      style: this._style.value,
-      abv: this._abv.value,
-      price: price,
-      pintsLeft: 120,
-      id: v4(),
-
-    });
 
     this._name.value = '';
     this._brewery.value = '';
@@ -152,8 +155,4 @@ class NewKegForm extends React.Component {
   }
 }
 
-NewKegForm.propTypes = {
-  onNewKegCreation: PropTypes.func,
-};
-
-export default NewKegForm;
+export default connect()(NewKegForm);

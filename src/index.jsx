@@ -2,15 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './App';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import './style.scss';
+import { createStore } from 'redux';
+import kegListReducer from './reducers/keg-list-reducer.js';
+
+const store = createStore(kegListReducer);
+
+let unsubscribe = store.subscribe(() =>
+  console.log(store.getState())
+);
 
 const root = document.getElementById('root');
 
 const render = (Component) => {
   ReactDOM.render(
-    <AppContainer>
+    <BrowserRouter>
+    <Provider store={store}>
       <Component />
-    </AppContainer>,
+    </Provider>
+    </BrowserRouter>,
     root,
   );
 };

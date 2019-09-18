@@ -1,22 +1,19 @@
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Routes from './components/Routes';
 import Header from './components/Header';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+    console.log(props);
 
     this.state = {
       masterKegList: [],
     };
   }
-
-  handleAddingNewKeg = (newKeg) => {
-    let newMasterKegList = this.state.masterKegList.slice();
-    newMasterKegList.push(newKeg);
-    this.setState({ masterKegList: newMasterKegList });
-  };
 
   handleEditKeg = (updatedKeg) => {
     this.setState(state => {
@@ -51,19 +48,26 @@ class App extends React.Component {
 
   render() {
     return (
-      <BrowserRouter>
       <main className="container">
       <Header />
       <Routes
-        onAddingNewKeg={this.handleAddingNewKeg}
-        kegList={this.state.masterKegList}
+        kegList={this.props.masterKegList}
         onSellBeer={this.handleSellBeer}
         onEditKeg={this.handleEditKeg}
       />
       </main>
-      </BrowserRouter>
     );
   }
 };
 
-export default App;
+App.propTypes = {
+  masterTicketList: PropTypes.object,
+};
+
+const mapStateToProps = state => {
+  return {
+    masterKegList: state,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(App));

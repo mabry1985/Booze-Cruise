@@ -28,7 +28,7 @@ const Routes = (props) => (
 
 Routes.propTypes = {
   onNewKegCreation: PropTypes.func,
-  kegList: PropTypes.array,
+  kegList: PropTypes.object,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
   id: PropTypes.string,

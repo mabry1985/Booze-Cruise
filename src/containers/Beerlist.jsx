@@ -12,7 +12,7 @@ const BeerList = (props) => (
 );
 
 BeerList.propTypes = {
-  kegList: PropTypes.array,
+  kegList: PropTypes.object,
   onSellBeer: PropTypes.func,
   onEditKeg: PropTypes.func,
 };
