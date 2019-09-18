@@ -17,6 +17,11 @@ const Routes = (props) => (
            render={()=><AddKeg
            onNewKegCreation={props.onAddingNewKeg} />}
            />
+    <Route path="/admin"
+           render={(props)=><BeerList
+           kegList={props.kegList}
+           currentRouterPath={props.location.pathname} />}
+           />
     <Route component={Error404} />
   </Switch>
 );
