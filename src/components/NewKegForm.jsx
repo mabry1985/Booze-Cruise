@@ -9,11 +9,6 @@ class NewKegForm extends React.Component {
     this.state = {
       checkedRadio: 'micro',
     };
-
-    let _name = null;
-    let _brewery = null;
-    let _abv = null;
-    let _style = null;
   };
 
   handleChange = (event) => {
@@ -24,21 +19,7 @@ class NewKegForm extends React.Component {
   };
 
   handleNewKegFormSubmission = (event) => {
-    const { dispatch } = this.props;
     event.preventDefault();
-
-    const action = {
-      type: 'ADD_KEG',
-      name: this._name.value,
-      brewery: this._brewery.value,
-      style: this._style.value,
-      abv: this._abv.value,
-      price: price,
-      pintsLeft: 120,
-      id: v4(),
-    };
-
-    dispatch(action);
 
     let style = this.state.checkedRadio;
     let price = '';
@@ -50,6 +31,29 @@ class NewKegForm extends React.Component {
     } else {
       price = 4;
     }
+
+    const name = this._name.value;
+    const brewery = this._brewery.value;
+    style = this._style.value;
+    const abv = this._abv.value;
+    price = price;
+    const pintsLeft = 120;
+    const id = v4();
+
+    const data = {
+      id,
+      name,
+      brewery,
+      style,
+      abv,
+      price,
+      pintsLeft,
+    };
+
+    this.props.dispatch({
+      type: 'ADD_KEG',
+      data,
+    });
 
     this._name.value = '';
     this._brewery.value = '';

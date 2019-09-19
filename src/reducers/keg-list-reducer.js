@@ -1,19 +1,20 @@
-export default (state = {}, action) => {
+const kegListReducer = (state = [], action) => {
   switch (action.type) {
     case 'ADD_KEG':
-      const { name, abv, brewery, price, pintsLeft, id } = action;
-      let newState = Object.assign({}, state, {
-        [id]: {
-          name: name,
-          abv: abv,
-          brewery: brewery,
-          price: price,
-          pintsLeft: pintsLeft,
-          id: id,
-        },
+      return state.concat([action.data]);
+    case 'SELL_BEER':
+      console.log('in sell_beer', state, action.id);
+      return state.map((keg) => {
+        if (keg.id === action.id) {
+          return {
+            ...keg,
+            pintsLeft: keg.pintsLeft - 1,
+          };
+        } else return post;
       });
-      return newState;
     default:
       return state;
   }
 };
+
+export default kegListReducer;

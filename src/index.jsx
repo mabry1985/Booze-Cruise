@@ -6,9 +6,9 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import './style.scss';
 import { createStore } from 'redux';
-import kegListReducer from './reducers/keg-list-reducer.js';
+import rootReducer from './reducers';
 
-const store = createStore(kegListReducer);
+const store = createStore(rootReducer);
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())

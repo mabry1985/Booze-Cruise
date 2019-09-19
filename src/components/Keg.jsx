@@ -2,56 +2,25 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import EditKeg from './EditKeg';
+import { useSelector, useDispatch, connect } from 'react-redux';
 
 function Keg(props) {
+  const counter = useSelector(state => state.counter);
+  const dispatch = useDispatch();
+
   return (
-    <Router>
-    <div>
-      <h3>{props.name} - {props.abv}%</h3>
-      <p><em>{props.brewery}</em></p>
-      <p>${props.price}.00</p>
-      <p>{props.pintsLeft}</p>
+    <div key={props.keg.id}>
+      <h3>{props.keg.name} - {props.keg.abv}%</h3>
+      <p><em>{props.keg.brewery}</em></p>
+      <p>${props.keg.price}.00</p>
+      <p>pints left: {props.keg.pintsLeft}</p>
       <button
-        onClick={() => props.onSellBeer(props.id)}>
+        onClick={() => dispatch({ type: 'SELL_BEER', id: props.keg.id })}>
         Sell
       </button>
-      <Link to={{
-          pathname: '/edit-keg/' + props.id,
-          id: props.id,
-        }}>
-        <button type="button">
-             Edit Keg
-        </button>
-      </Link>
-      <Route path="/edit-keg/:id"
-             render={()=><EditKeg
-             onEditKeg={props.onEditKeg}
-             name={props.name}
-             brewery={props.brewery}
-             price={props.price}
-             style={props.style}
-             abv={props.abv}
-             pintsLeft={props.pintsLeft}
-             key={props.id}
-             id={props.id} />}
-             />
       <hr />
     </div>
-    </Router>
   );
 }
 
-Keg.propTypes = {
-  name: PropTypes.string,
-  brewery: PropTypes.string,
-  abv: PropTypes.string,
-  price: PropTypes.number,
-  style: PropTypes.string,
-  id: PropTypes.string,
-  pintsLeft: PropTypes.number,
-  onSellBeer: PropTypes.func,
-  onEditKeg: PropTypes.func,
-
-};
-
-export default Keg;
+export default connect()(Keg);
