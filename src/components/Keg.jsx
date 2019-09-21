@@ -18,6 +18,10 @@ function Keg(props) {
         onClick={() => dispatch({ type: 'SELL_BEER', id: props.keg.id })}>
         Sell
       </button>
+      <button
+        onClick={() => dispatch({ type: 'EDIT_BEER', id: props.keg.id })}>
+        Edit
+      </button>
       <hr />
     </div>
   );

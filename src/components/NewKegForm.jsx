@@ -48,6 +48,7 @@ class NewKegForm extends React.Component {
       abv,
       price,
       pintsLeft,
+      editing: false,
     };
 
     this.props.dispatch({
